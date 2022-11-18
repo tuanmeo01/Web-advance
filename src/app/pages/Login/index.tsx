@@ -1,12 +1,21 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import styled from '@emotion/styled';
-import { useState, useRef } from 'react';
 import LogoGochie from '../../Asset/logoGochie.svg';
-import { Autocomplete, PasswordInput, Input } from '@mantine/core';
+import { PasswordInput, Input } from '@mantine/core';
 import ChangLanguage from 'app/components/ChangeLanguageBtn';
 import { useTranslation } from 'react-i18next';
 const Login = () => {
+  var username: String;
+  var password: String;
+  const handleGetUsername = event => {
+    username = event.target.value;
+    console.log('user is:', username);
+  };
+  const handleGetPassword = event => {
+    password = event.target.value;
+    console.log('pass is:', password);
+  };
   const { t } = useTranslation();
   return (
     <>
@@ -27,11 +36,13 @@ const Login = () => {
                 placeholder={t('Login.PlayholdeUsername')}
                 size="md"
                 radius="md"
+                onChange={handleGetUsername}
               />
             </Input.Wrapper>
             <div style={{ margin: '50px' }}> </div>
             <PasswordInput
               label={t('Login.password')}
+              onChange={handleGetPassword}
               placeholder={t('Login.PlayholdePassword')}
               size="md"
               radius="md"

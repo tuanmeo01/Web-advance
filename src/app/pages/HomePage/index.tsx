@@ -70,7 +70,7 @@ const ContainHeader = styled.div`
   width: 100%;
   height: 10vh;
   padding: 15px;
-  background-color: #eaeaea;
+  background-color: #f7f2f2;
   display: flex;
   justify-content: end;
   @media (max-width: 768px) {
