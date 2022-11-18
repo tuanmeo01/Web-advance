@@ -3,6 +3,7 @@ import Header from 'app/components/Header';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { IconMenu2, IconX } from '@tabler/icons';
 import LogoGochie from '../../Asset/logoGochie.svg';
 
 export function HomePage() {
@@ -24,7 +25,9 @@ export function HomePage() {
 
       <Contain>
         <ContainHeader>
-          <Bars onClick={() => setSideBarMobile(true)}>a</Bars>
+          <Bars onClick={() => setSideBarMobile(true)}>
+            <IconMenu2></IconMenu2>
+          </Bars>
           <img src={LogoGochie} alt="logo" />
         </ContainHeader>
         <ContainContent>
@@ -43,7 +46,9 @@ export function HomePage() {
           ) : sideBarMobile ? (
             <>
               <SideBar>
-                <div onClick={() => setSideBarMobile(false)}>X</div>
+                <div onClick={() => setSideBarMobile(false)}>
+                  <IconX />
+                </div>
                 <Menu>menu1</Menu>
                 <Menu>menu2</Menu>
                 <Menu>menu3</Menu>
