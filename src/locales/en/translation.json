@@ -1,3 +1,8 @@
 {
-  "title": "welcome"
+  "Login": {
+    "username": "Username",
+    "password": "Password",
+    "PlayholdeUsername": "Write Username here",
+    "PlayholdePassword": "Write Password here"
+  }
 }

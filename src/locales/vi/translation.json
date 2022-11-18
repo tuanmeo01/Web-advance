@@ -1,0 +1,8 @@
+{
+  "Login": {
+    "username": "Tên tài khoản",
+    "password": "Mật khẩu",
+    "PlayholdeUsername": "Nhập tên tài khoản",
+    "PlayholdePassword": "Nhập mật khẩu"
+  }
+}

@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { IconMenu2, IconX } from '@tabler/icons';
 import LogoGochie from '../../Asset/logoGochie.svg';
+import ChangLanguage from 'app/components/ChangeLanguageBtn';
 
 export function HomePage() {
   const [toggleSidebar, setToggleSidebar] = useState(true);
@@ -28,6 +29,7 @@ export function HomePage() {
           <Bars onClick={() => setSideBarMobile(true)}>
             <IconMenu2></IconMenu2>
           </Bars>
+          <ChangLanguage />
           <img src={LogoGochie} alt="logo" />
         </ContainHeader>
         <ContainContent>

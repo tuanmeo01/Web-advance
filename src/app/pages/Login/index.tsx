@@ -4,7 +4,10 @@ import styled from '@emotion/styled';
 import { useState, useRef } from 'react';
 import LogoGochie from '../../Asset/logoGochie.svg';
 import { Autocomplete, PasswordInput, Input } from '@mantine/core';
+import ChangLanguage from 'app/components/ChangeLanguageBtn';
+import { useTranslation } from 'react-i18next';
 const Login = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -12,17 +15,24 @@ const Login = () => {
       </Helmet>
       <Contain>
         <ContainLogin>
+          <BtnChangeLanguage>
+            <ChangLanguage />
+          </BtnChangeLanguage>
           <LogoGochiee>
             <img src={LogoGochie} alt="logo gochie" />
           </LogoGochiee>
           <ContainInput>
-            <Input.Wrapper label="Username" required>
-              <Input placeholder="Username" size="md" radius="md" />
+            <Input.Wrapper label={t('Login.username')} required>
+              <Input
+                placeholder={t('Login.PlayholdeUsername')}
+                size="md"
+                radius="md"
+              />
             </Input.Wrapper>
             <div style={{ margin: '50px' }}> </div>
             <PasswordInput
-              placeholder="Password"
-              label="Password"
+              label={t('Login.password')}
+              placeholder={t('Login.PlayholdePassword')}
               size="md"
               radius="md"
               withAsterisk
@@ -58,6 +68,7 @@ const ContainLogin = styled.div`
   padding: 50px 80px;
   @media (max-width: 768px) {
     height: 100%;
+    padding: 50px 5px;
   }
 `;
 const LogoGochiee = styled.div`
@@ -93,6 +104,16 @@ const Button = styled.div`
   @media (max-width: 768px) {
     height: 35px;
     width: 150px;
+  }
+`;
+const BtnChangeLanguage = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-top: -40px;
+  margin-right: -130px;
+  @media (max-width: 768px) {
+    margin-right: 0;
   }
 `;
 export default Login;
