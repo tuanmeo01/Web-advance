@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import styled from '@emotion/styled';
 import { useState, useRef } from 'react';
 import LogoGochie from '../../Asset/logoGochie.svg';
@@ -6,6 +7,9 @@ import { Autocomplete, PasswordInput, Input } from '@mantine/core';
 const Login = () => {
   return (
     <>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <Contain>
         <ContainLogin>
           <LogoGochiee>
@@ -82,6 +86,9 @@ const Button = styled.div`
   background-color: #e14486;
   &:hover {
     background-color: #9b2259;
+  }
+  &:active {
+    background-color: #e14486;
   }
   @media (max-width: 768px) {
     height: 35px;
