@@ -16,6 +16,12 @@ const Login = () => {
   const dispatch = useDispatch();
   const { actions } = useUserSlice();
   const user = useSelector(selectUser);
+  const handleGetUsername = event => {
+    username = event.target.value;
+  };
+  const handleGetPassword = event => {
+    password = event.target.value;
+  };
   const handleSubmit = () => {
     dispatch(
       actions.login({
@@ -24,17 +30,13 @@ const Login = () => {
       }),
     );
   };
+
   React.useEffect(() => {
     if (user) {
       navigate('/homepage');
     }
   }, [navigate, user]);
-  const handleGetUsername = event => {
-    username = event.target.value;
-  };
-  const handleGetPassword = event => {
-    password = event.target.value;
-  };
+
   const { t } = useTranslation();
   return user ? (
     <div></div>

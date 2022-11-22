@@ -3,7 +3,6 @@ import { useInjectReducer, useInjectSaga } from 'redux-injectors';
 import { UserState } from './types';
 import useUserFromSaga from './saga';
 import { getLocal } from 'utils/getLocal';
-import { stringify } from 'querystring';
 
 export const initialState: UserState = getLocal('users') || {
   user: false,

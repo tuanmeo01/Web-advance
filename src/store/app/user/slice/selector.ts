@@ -26,3 +26,7 @@ export const selectMessage = createSelector(
   [selectDomain],
   userSelector => userSelector.message,
 );
+// export const selectMessage=createSelector(
+//   [selectDomain],
+
+// )
