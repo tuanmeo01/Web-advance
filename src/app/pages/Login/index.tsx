@@ -26,7 +26,7 @@ const Login = () => {
   };
   React.useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate('/homepage');
     }
   }, [navigate, user]);
   const handleGetUsername = event => {
