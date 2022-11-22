@@ -1,15 +1,22 @@
 import styled from '@emotion/styled';
-import Header from 'app/components/Header';
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { IconMenu2, IconX } from '@tabler/icons';
 import LogoGochie from '../../Asset/logoGochie.svg';
 import ChangLanguage from 'app/components/ChangeLanguageBtn';
+import { Button } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useUserSlice } from 'store/app/user/slice';
 
 export function HomePage() {
   const [toggleSidebar, setToggleSidebar] = useState(true);
   const [sideBarMobile, setSideBarMobile] = useState(false);
+  const dispatch = useDispatch();
+  const { actions } = useUserSlice();
+
+  const navigate = useNavigate();
   window.addEventListener('resize', function () {
     if (window.screen.width < 768) {
       setToggleSidebar(false);
@@ -17,7 +24,11 @@ export function HomePage() {
       setToggleSidebar(true);
     }
   });
-
+  const handleLogout = () => {
+    localStorage.removeItem('users');
+    navigate('/login');
+    window.location.reload();
+  };
   return (
     <>
       <Helmet>
@@ -40,6 +51,7 @@ export function HomePage() {
                 <Menu>menu2</Menu>
                 <Menu>menu3</Menu>
                 <Menu>menu4</Menu>
+                <Button onClick={() => handleLogout()}>Logout</Button>
               </SideBar>
               <Content>
                 <p>1</p>

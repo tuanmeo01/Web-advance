@@ -5,19 +5,40 @@ import LogoGochie from '../../Asset/logoGochie.svg';
 import { PasswordInput, Input } from '@mantine/core';
 import ChangLanguage from 'app/components/ChangeLanguageBtn';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from 'store/app/user/slice/selector';
+import { useUserSlice } from 'store/app/user/slice';
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
-  var username: String;
-  var password: String;
+  const navigate = useNavigate();
+  var username: string;
+  var password: string;
+  const dispatch = useDispatch();
+  const { actions } = useUserSlice();
+  const user = useSelector(selectUser);
+  const handleSubmit = () => {
+    dispatch(
+      actions.login({
+        username,
+        password,
+      }),
+    );
+  };
+  React.useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [navigate, user]);
   const handleGetUsername = event => {
     username = event.target.value;
-    console.log('user is:', username);
   };
   const handleGetPassword = event => {
     password = event.target.value;
-    console.log('pass is:', password);
   };
   const { t } = useTranslation();
-  return (
+  return user ? (
+    <div></div>
+  ) : (
     <>
       <Helmet>
         <title>Login</title>
@@ -49,13 +70,13 @@ const Login = () => {
               withAsterisk
             />
           </ContainInput>
-          <Button>Login</Button>
+          <Button onClick={() => handleSubmit()}>Login</Button>
         </ContainLogin>
       </Contain>
     </>
   );
 };
-
+export default Login;
 const Contain = styled.div`
   width: 100%;
   height: 100vh;
@@ -127,4 +148,3 @@ const BtnChangeLanguage = styled.div`
     margin-right: 0;
   }
 `;
-export default Login;
